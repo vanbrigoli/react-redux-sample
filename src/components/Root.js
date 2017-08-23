@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './../App'
-import List from './List';
+import Buyer from './Buyer';
 import Home from './Home';
 
 const Root = ({ store }) => (
@@ -11,7 +11,7 @@ const Root = ({ store }) => (
         <Router history={browserHistory}>
             <Route path="/" component={App}/>
             <Route path={"/vendor"} component={Home}/>
-            <Route path={"/buyer"} component={List}/>
+            <Route path={"/buyer"} component={Buyer}/>
         </Router>
     </Provider>
 );

@@ -1,0 +1,25 @@
+.ItemCol {
+    max-width: 100%;
+}
+.TrayCol {
+    display: block;
+    max-height: 100%;
+    text-align: center;
+    border-style: outset;
+    padding: 5px;
+}
+
+.Buyer-container {
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    clear: both;
+}
+
+.col-item {
+    margin: auto;
+    display: block;
+}
+.col-del {
+    text-align: right;
+}

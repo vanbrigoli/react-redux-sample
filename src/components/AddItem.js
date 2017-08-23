@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import listStore from './../store/ListStore';
 import { addItem } from './../actions/TodoActions';
-
+import './AddItem.css';
 class AddItem extends Component {
     input;
     handleSubmit(event) {
