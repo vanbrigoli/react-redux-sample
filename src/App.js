@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+import './App.css';
 
 class App extends Component {
     goToVendorPage(event) {
@@ -15,13 +16,13 @@ class App extends Component {
     render() {
         return (
             <div className="container">
-                <div className="jumbotron">
+                <div className="jumbotron App-center">
                     <h1>Welcome to E-bili</h1>
-                    <p>Try one now</p>
+                    <p>Kain tayo ti!</p>
                 </div>
-                <div className="App-btn-center">
+                <div className="App-center">
                     <button type="button" className="btn btn-primary btn-lg" onClick={this.goToVendorPage.bind(this)}>Vendor</button>
-                    <button type="button" className="btn btn-success btn-lg" onClick={this.goToBuyerPage.bind(this)}>Buyer</button>
+                    <button type="button" className="btn btn-success btn-lg" style={{marginLeft: 10}} onClick={this.goToBuyerPage.bind(this)}>Buyer</button>
                 </div>
             </div>
         )
