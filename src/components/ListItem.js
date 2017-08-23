@@ -17,14 +17,18 @@ class ListItem extends Component {
     render() {
         return (
             <a className="list-group-item" onClick={this.handleToggle.bind(this)}>
-                <div className="row">
-                    <div className="col-item col-sm-9">
-                        <span>{this.props.item.title}</span>
-                    </div>
-                    <div className="col-del col-sm-1">
-                        <button className="btn btn-primary" onClick={this.handleDelete.bind(this)}>
-                            Delete
-                        </button>
+                <div className="card">
+                    <div className="card-block">
+                            <div className="row">
+                                <div className="col-md-8">
+                                    {this.props.item.title}
+                                </div>
+                                <div className="col-md-1">
+                                    <button className="btn btn-primary" onClick={this.handleDelete.bind(this)}>
+                                            X
+                                    </button>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </a>

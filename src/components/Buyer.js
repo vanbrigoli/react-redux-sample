@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ListItem from './ListItem';
-import AddItem from './AddItem';
+import {AddItem, AlertThis} from './AddItem';
 import './Buyer.css';
 
 class Buyer extends Component {
@@ -15,18 +15,24 @@ class Buyer extends Component {
         return (
             <div>
                 <div className="Buyer-container">
-                    <div className="row">
-                        <div className="ItemCol col-sm-8">
-                            <AddItem/>
+                    <div className="row justify-content-md-center">
+                        <div className="col-sm-5 ItemCol">
+                            <fieldset className="tray">
+                                <legend>Food Menu:</legend>
+                                <AddItem/>
+                            </fieldset>
+
                         </div> 
-                        <div className="TrayCol col-sm-4">
+                        <div className="col-sm-5 TrayCol">
                             <fieldset className="tray">
                                 <legend>Tray:</legend>
                                 {itemlist}
                             </fieldset>
                         </div>
                     </div>
+                    <AlertThis />
                 </div>
+                
             </div>
         );        
     }

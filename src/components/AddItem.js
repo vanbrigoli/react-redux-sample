@@ -26,4 +26,25 @@ class AddItem extends Component {
     }
 };
 
-export default AddItem;
+class AlertThis extends Component {
+    render() {
+        var OrderID = 500;
+        return (
+            <div className="alert alert-success">
+                <button type="button" className="close" data-dismiss="alert" aria-hidden="true">
+                    ×</button>
+                <span className="glyphicon glyphicon-info-sign"></span> <strong>Info Message</strong>
+                <hr className="message-inner-separator"/>
+                <p>
+                    Your order ID: <strong>{OrderID}</strong> has been placed.<br/>Please wait for your queue.
+                </p>
+            </div>
+        )
+
+    }
+}
+
+export {
+    AlertThis,
+    AddItem
+}
