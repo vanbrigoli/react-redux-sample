@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
 import './App.css';
 
 class App extends Component {
-    goToVendorPage(event) {
-        event.preventDefault();
-        browserHistory.push('/vendor');
-    }
-
-    goToBuyerPage(event) {
-        event.preventDefault();
-        browserHistory.push('/buyer');
-    }
-
     render() {
         return (
             <div className="container">
@@ -21,8 +11,8 @@ class App extends Component {
                     <p>Kain tayo ti!</p>
                 </div>
                 <div className="App-center">
-                    <button type="button" className="btn btn-primary btn-lg" onClick={this.goToVendorPage.bind(this)}>Vendor</button>
-                    <button type="button" className="btn btn-success btn-lg" style={{marginLeft: 10}} onClick={this.goToBuyerPage.bind(this)}>Buyer</button>
+                    <Link to="/vendor" type="button" className="btn btn-primary btn-lg">Vendor</Link>
+                    <Link to="/buyer" type="button" style={{marginLeft: 10}} className="btn btn-success btn-lg">Buyer</Link>
                 </div>
             </div>
         )
