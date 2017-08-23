@@ -2,13 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ListItem from './ListItem';
 import AddItem from './AddItem';
-import listStore from './../store/ListStore';
-import { getLists } from './../actions/TodoActions';
 
 class List extends Component {
-    componentWillMount(){
-        listStore.dispatch(getLists());
-    }
     render() {
         if (this.props.lists.length !== 0) {
             return (
