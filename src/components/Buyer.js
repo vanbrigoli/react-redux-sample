@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ListItem from './ListItem';
 import AddItem from './AddItem';
+import Tray from './Tray';
 import './Buyer.css';
 
 class Buyer extends Component {
@@ -16,28 +17,17 @@ class Buyer extends Component {
             <div>
                 <div className="Buyer-container">
                     <div className="row">
-                        <div className="ItemCol col-sm-8">
+                        <div className="ItemCol col-sm-6">
                             <fieldset className="tray">
                                 <legend>Food Menu</legend>
                                 <AddItem/>
-                            </fieldset>                            
-                        </div> 
-                        <div className="TrayCol col-sm-4">
-                            <fieldset className="tray">
-                                <legend>Tray</legend>
-                                {itemlist}
                             </fieldset>
+                        </div> 
+                        <div className="TrayCol col-sm-6">
+                            <legend>Tray</legend>
+                            <Tray/>
                         </div>
                     </div>
-                </div>
-                <div className="alert alert-success">
-                    <button type="button" className="close" data-dismiss="alert" aria-hidden="true">
-                        ×</button>
-                    <span className="glyphicon glyphicon-info-sign"></span> <strong>Info Message</strong>
-                    <hr className="message-inner-separator"/>
-                        <p>
-                            Your order ID: <strong>00001</strong> has been placed.<br/>Please wait for your queue.
-                        </p>
                 </div>
             </div>
         );        
