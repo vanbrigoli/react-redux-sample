@@ -1,6 +1,6 @@
-.PanelCol{
+.VendPanel {
     display: block;
-    max-height: 100%;
+    max-width: 100%;
     text-align: center;
     border-style: outset;
     padding: 5px;
@@ -13,10 +13,11 @@
     clear: both;
 }
 
-.col-item {
-    margin: auto;
-    display: block;
+.VendPanel ul li {
+    display: inline;
+    margin: 5px;
 }
-.col-del {
-    text-align: right;
+
+th {
+    text-align: center;
 }

@@ -14,13 +14,16 @@ class AddItem extends Component {
     }
     render() {
         return (
-            <div className="input-group">
+            <div className="input-group ">
                 <input ref={node => {
                     this.input = node
-                }} type="text" className="form-control" placeholder="Add item"/>
+                }} type="text" className="form-control" placeholder="Item Name"/>
+                <input ref={node => {
+                    this.input = node
+                }} type="text" className="form-control" placeholder="Price"/>
                 <span className="input-group-btn">
-                <button className="btn btn-primary" type="button" onClick={this.handleSubmit.bind(this)}>Add</button>
-              </span>
+                    <button className="btn btn-primary" type="button" onClick={this.handleSubmit.bind(this)}>Add</button>
+                </span>
             </div>
         )
     }

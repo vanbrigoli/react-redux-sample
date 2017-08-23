@@ -15,15 +15,15 @@ class Buyer extends Component {
         }
         return (
             <div>
-                <div className="Buyer-container">
+                <div className="container">
                     <div className="row">
-                        <div className="ItemCol col-sm-6">
+                        <div className="PanelCol col-sm-6">
                             <fieldset className="tray">
                                 <legend>Food Menu</legend>
                                 <AddItem/>
                             </fieldset>
                         </div> 
-                        <div className="TrayCol col-sm-6">
+                        <div className="PanelCol col-sm-6">
                             <legend>Tray</legend>
                             <Tray/>
                         </div>
