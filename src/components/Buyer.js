@@ -7,13 +7,14 @@ import './Buyer.css';
 class Buyer extends Component {
     render() {
         var listgroupitems = this;
+        var TotalPrice = 50000;
         if (listgroupitems.props.lists.length !== 0) {   
             var itemlist = listgroupitems.props.lists.map(item => (<ListItem item={item} key={item.id}/>));
         } else {
             itemlist = "Please order some food from the Food Menu on the left.";
         }
         return (
-            <div>
+            <div className="container">
                 <div className="Buyer-container">
                     <div className="row justify-content-md-center">
                         <div className="col-sm-5 ItemCol">
@@ -27,6 +28,13 @@ class Buyer extends Component {
                             <fieldset className="tray">
                                 <legend>Tray:</legend>
                                 {itemlist}
+                                <hr/>
+                                <div id="TotalPrice">
+                                    Total: <strong>Php {TotalPrice}</strong>
+                                </div>
+                                <div>
+                                    <button className="btn btn-primary">Place Order</button>
+                                </div>
                             </fieldset>
                         </div>
                     </div>

@@ -5,6 +5,18 @@
     clear: both;
 }
 
+#TotalPrice {
+    font-size: 50px;
+}
+table td {
+    width: 33%;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+}
+.trayCol{
+    max-width:50%;
+}
 .alert {
     width: 30%;
     position: fixed;

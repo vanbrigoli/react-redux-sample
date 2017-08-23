@@ -15,24 +15,26 @@ class ListItem extends Component {
         event.preventDefault();
     }
     render() {
+        var Price = 500;
         return (
-            <a className="list-group-item" onClick={this.handleToggle.bind(this)}>
-                <div className="card">
+                 <div className="card">
                     <div className="card-block">
+                        <div className="container-fluid">
                             <div className="row">
-                                <div className="col-md-8">
-                                    {this.props.item.title}
-                                </div>
-                                <div className="col-md-1">
-                                    <button className="btn btn-primary" onClick={this.handleDelete.bind(this)}>
-                                            X
-                                    </button>
-                                </div>
+                                <table className="table table-hover">
+                                    <tr>
+                                        <td>{this.props.item.title}</td>
+                                        <td>Php {Price}</td>
+                                        <td>
+                                            <button className="btn btn-primary" onClick={this.handleDelete.bind(this)}>X</button>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
+                        </div>
                     </div>
                 </div>
-            </a>
-        )
+        );
     }
 }
 

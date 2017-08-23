@@ -19,8 +19,8 @@ class AddItem extends Component {
                     this.input = node
                 }} type="text" className="form-control" placeholder="Add item"/>
                 <span className="input-group-btn">
-                <button className="btn btn-primary" type="button" onClick={this.handleSubmit.bind(this)}>Add</button>
-              </span>
+                    <button className="btn btn-primary" type="button" onClick={this.handleSubmit.bind(this)}>Add</button>
+                </span>
             </div>
         )
     }
