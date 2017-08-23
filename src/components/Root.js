@@ -9,10 +9,9 @@ import Home from './Home';
 const Root = ({ store }) => (
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path="/" component={App}>
-                <IndexRoute component={Home}/>
-                <Route path="lists" component={List}/>
-            </Route>
+            <Route path="/" component={App}/>
+            <Route path={"/vendor"} component={Home}/>
+            <Route path={"/buyer"} component={List}/>
         </Router>
     </Provider>
 );
