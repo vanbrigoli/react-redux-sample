@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import ListItem from './ListItem';
 import AddItem from './AddItem';
 import Tray from './Tray';
@@ -16,11 +17,44 @@ class Buyer extends Component {
         return (
             <div>
                 <div className="container">
-                    <div className="row">
+                    <div className="header">
+                        <div className="table">
+                            <ul>
+                                Goto:
+                                <li><Link to="/" className="btn btn-success">Home</Link></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="container">
                         <div className="PanelCol col-sm-6">
                             <fieldset className="tray">
                                 <legend>Food Menu</legend>
-                                <AddItem/>
+                                {/*Hardcoded mockups | Placeholders*/}
+                                <table className="table table-bordered table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Price</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> item 1 </td>
+                                            <td> 500 </td>
+                                            <td> 
+                                                <button className="btn btn-success"> Add to Tray </button> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> item 2 </td>
+                                            <td> 500 </td>
+                                            <td> 
+                                                <button className="btn btn-success"> Add to Tray </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </fieldset>
                         </div> 
                         <div className="PanelCol col-sm-6">

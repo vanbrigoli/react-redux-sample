@@ -2,8 +2,11 @@
     display: block;
     max-width: 100%;
     text-align: center;
-    border-style: outset;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
     padding: 5px;
+    
 }
 
 .container {
@@ -11,8 +14,12 @@
     height: 100%;
     display: block;
     clear: both;
+    text-align: left;
 }
 
+.container .header {
+    text-align: left;
+}
 .VendPanel ul li {
     display: inline;
     margin: 5px;
