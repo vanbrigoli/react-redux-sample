@@ -1,5 +1,13 @@
+html {
+    height: 100%;
+}
+
 body {
   margin: 0;
   padding: 20px;
   font-family: sans-serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+
+
