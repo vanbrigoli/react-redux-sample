@@ -19,8 +19,8 @@ class Menu extends Component {
         return(
             <div>
                 Sort by:
-                <button onClick={() => this.props.onSortMenuItems('price')}> Price </button>
-                <button onClick={() => this.props.onSortMenuItems('itemName')}> Name </button>
+                <button className="btn btn-link" onClick={() => this.props.onSortMenuItems('price')}> Price </button>|
+                <button className="btn btn-link" onClick={() => this.props.onSortMenuItems('itemName')}> Name </button>
                 {this.renderList()}
             </div>
         );
