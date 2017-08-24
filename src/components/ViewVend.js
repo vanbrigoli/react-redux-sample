@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import './ViewVend.css';
+import Navbar from './Navbar';
 
 class ViewVend extends Component {
     render() {
         return (
             <div className="container">
-                <div className="header">
-                    <div className="table">
-                        <ul>
-                            Goto:
-                            <li><Link to="/" className="btn btn-success">Home</Link></li>
-                            <li><Link to="/vendItem" className="btn btn-success">Vend an Item</Link></li>
-                            <li><Link to="/vendor" className="btn btn-success disabled">View Vending List</Link></li>
-                        </ul>
-                    </div>
+                <div className="header row">
+                    {Navbar("Vendor","ViewVend")}
                 </div>
-                <div className="VendPanel">
+                <div className="container VendPanel">
                     <fieldset>
                         <legend>Vending List</legend>
                         {/*Hardcoded mockups | Placeholders*/}

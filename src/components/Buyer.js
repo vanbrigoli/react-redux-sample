@@ -5,6 +5,7 @@ import ListItem from './ListItem';
 import AddItem from './AddItem';
 import Tray from './Tray';
 import './Buyer.css';
+import Navbar from './Navbar';
 
 class Buyer extends Component {
     render() {
@@ -18,14 +19,9 @@ class Buyer extends Component {
             <div>
                 <div className="container">
                     <div className="header">
-                        <div className="table">
-                            <ul>
-                                Goto:
-                                <li><Link to="/" className="btn btn-success">Home</Link></li>
-                            </ul>
-                        </div>
+                        {Navbar("Buyer")}
                     </div>
-                    <div className="container">
+                    <div className="container VendPanel">
                         <div className="PanelCol col-sm-6">
                             <fieldset className="tray">
                                 <legend>Food Menu</legend>
