@@ -4,8 +4,11 @@ import { formatPrice } from '../utils';
 
 export default class UserOrderList extends Component {
   renderOrders() {
-    return this.props.activeOrder.orders
-      && this.props.activeOrder.orders.map(order => (<OrderTile key={order.id} order={order} />))
+    const orders = consolidateOrders(this.props.activeOrder.orders);
+
+    return Object.keys(orders).map(orderNumber => {
+      return <OrderTile key={orderNumber} order={orders[orderNumber]} />
+    })
   }
 
   render() {
@@ -29,4 +32,25 @@ export default class UserOrderList extends Component {
       </div>
     )
   }
+}
+
+function consolidateOrders (orderList) {
+  const orders = {};
+   orderList && orderList.forEach(order => {
+    const existingOrder = orders[order.id];
+    if (existingOrder) {
+      const qty = ++existingOrder.qty;
+      orders[order.id] = {
+        ...existingOrder,
+        qty
+      };
+    } else {
+      orders[order.id] = {
+        ...order,
+        qty: 1
+      }
+    }
+  });
+
+  return orders;
 }

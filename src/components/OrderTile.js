@@ -7,8 +7,10 @@ const OrderTile = ({ order }) => {
 
   return (
     <li className="list-group-item">
-      <p>{itemName} <b>#{id}</b></p>
-      <h4>{amount}</h4>
+      <div className="card">
+        <p><b>#{id}</b> {itemName} x{qty}</p>
+        <h4>{amount}</h4>
+      </div>
     </li>
   )
 };
