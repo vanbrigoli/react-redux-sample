@@ -4,9 +4,8 @@ import SubmitOrderBtn from './SubmitOrderBtn';
 import { connect } from 'react-redux';
 import { submitOrder, removeItem, rollbackOrder } from './../actions/TrayActions';
 
-const Tray = ({currentOrder, onSubmit, onRemove}) => {
+const Tray = ({currentOrder, getTotal, onSubmit, onRemove}) => {
     if(currentOrder.length !== 0) {
-        let total = getTotal(currentOrder);
         return (
             <div>
                 <table className="table table-bordered table-responsive">
@@ -21,26 +20,24 @@ const Tray = ({currentOrder, onSubmit, onRemove}) => {
                     { currentOrder.map((order) => (<TrayItem order={order} key={order.id} onRemove={() => onRemove(order.id)}/>))}
                     </tbody>
                 </table>
-                <div className="alert alert-success"><span>TOTAL: Php. </span>{total}</div>
-                <SubmitOrderBtn onClick={() => onSubmit(currentOrder, total)}/>
+                <div className="alert alert-success"><span>TOTAL: Php. </span>{getTotal()}</div>
+                <SubmitOrderBtn onClick={() => onSubmit(currentOrder, getTotal())}/>
             </div>
         )
     }
     return <div>No orders yet.</div>
 };
 
-let getTotal = orders => {
-    let total = 0;
-    for(let item of orders) {
-        total += item.price;
-    }
-    return total;
-}
-
 const mapStateToProps = state => {
-    console.log("STATE ", state);
     return {
-        currentOrder: state.currentOrderList
+        currentOrder: state.currentOrderList,
+        getTotal: () => {
+            let total = 0;
+            for(let item of state.currentOrderList) {
+                total += item.price;
+            }
+            return total;
+        }
     }
 };
 
