@@ -32,11 +32,9 @@ const mapStateToProps = state => {
     return {
         currentOrder: state.currentOrderList,
         getTotal: () => {
-            let total = 0;
-            for(let item of state.currentOrderList) {
-                total += item.price;
-            }
-            return total;
+            return state.currentOrderList.reduce((totalPrice, currentOrder) => {
+                return totalPrice + currentOrder.price;
+            }, 0)
         }
     }
 };
