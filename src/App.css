@@ -1,3 +1,26 @@
 .App-center {
   text-align: center;
+  background: url('http://www.negoskwela.ph/wp-content/uploads/2015/12/NC17_WEB.jpg') no-repeat no-repeat center/cover;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+
+  transition: all 5s;
+}
+
+.App-center hr{
+  color: white;
+  box-shadow: 2px 2px 5px black;
+}
+
+.App-center a.btn {
+  transition: all 0.5s;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+.App-center a.btn:hover {
+  background: white;
+  color: black;
+  text-shadow: none;
 }

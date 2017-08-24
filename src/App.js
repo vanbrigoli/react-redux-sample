@@ -7,12 +7,13 @@ class App extends Component {
         return (
             <div className="container">
                 <div className="jumbotron App-center">
-                    <h1>Welcome to E-bili</h1>
-                    <p>Kain tayo ti!</p>
-                </div>
-                <div className="App-center">
-                    <Link to="/vendor" type="button" className="btn btn-primary btn-lg">Vendor</Link>
-                    <Link to="/buyer" type="button" style={{marginLeft: 10}} className="btn btn-success btn-lg">Buyer</Link>
+                  <div className="background"></div>
+                  <h1>Welcome to E-bili</h1>
+                  <p>Kain tayo ti!</p>
+                  <div>
+                    <Link to="/vendor" type="button" className="btn btn-lg">Vendor</Link>
+                    <Link to="/buyer" type="button" style={{marginLeft: 10}} className="btn btn-lg">Buyer</Link>
+                  </div>
                 </div>
             </div>
         )
