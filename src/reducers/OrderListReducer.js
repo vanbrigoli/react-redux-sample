@@ -1,11 +1,14 @@
 let counter = 100;
-const orderList = (state = [], action) => {
+let orderNumber;
+
+export const orderList = (state = [], action) => {
     switch(action.type){
         case 'SUBMIT_ORDER': {
+            orderNumber = counter++;
             return [
                 ...state,
                 {
-                    orderNumber: counter++,
+                    orderNumber,
                     orders: action.orders,
                     totalPrice: action.total
                 }
@@ -15,4 +18,10 @@ const orderList = (state = [], action) => {
     }
 };
 
-export default orderList;
+export const activeOrder = (state = 0, action) => {
+    switch(action.type) {
+        case 'SUBMIT_ORDER':
+            return orderNumber;
+        default: return state;
+    }
+};

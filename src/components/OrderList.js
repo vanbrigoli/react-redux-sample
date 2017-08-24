@@ -4,16 +4,14 @@ import { formatPrice } from '../utils';
 
 export default class UserOrderList extends Component {
   renderOrders() {
-    return this.props.orders.map(order => (<OrderTile key={order.id} order={order} />))
+    return this.props.activeOrder.orders
+      && this.props.activeOrder.orders.map(order => (<OrderTile key={order.id} order={order} />))
   }
 
   render() {
-    const { heading, ...orderInfo } = this.props;
-    const total = orderInfo.orders
-      .reduce((currentValue, order) => {
-        const orderPrice = order.price * order.qty;
-        return orderPrice + currentValue;
-      }, 0);
+    const { heading, user, activeOrder } = this.props;
+    console.log(activeOrder)
+    const total = activeOrder.totalPrice || 0;
 
     return (
       <div className="panel panel-default">
@@ -21,7 +19,7 @@ export default class UserOrderList extends Component {
           {heading}
         </div>
         <div className="panel-body">
-          Order ni: {orderInfo.user.name}
+          Order ni: {user.name}
           <ul className="list-group">
             {this.renderOrders()}
           </ul>

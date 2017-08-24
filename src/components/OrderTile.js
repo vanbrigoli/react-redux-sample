@@ -2,7 +2,7 @@ import React from 'react';
 import { formatPrice } from '../utils';
 
 const OrderTile = ({ order }) => {
-  const { itemName, price, qty } = order;
+  const { itemName, price, qty = 1} = order;
   const amount = formatPrice(price*qty);
 
   return (

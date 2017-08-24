@@ -2,45 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import OrderList from './OrderList';
 
-const TEST_DATA = {
-  heading: "Your order",
-  user: {
-    id: 1,
-    name: "Hubs"
-  },
-  orders: [
-    {
-        itemName: 'TEST 1',
-        price: 500,
-        id: 1,
-        qty: 3
-    },
-    {
-        itemName: 'TEST 2',
-        price: 500,
-        id: 2,
-        qty: 3
-    },
-    {
-        itemName: 'TEST 3',
-        price: 500,
-        id: 3,
-        qty: 3
-    }
-  ]
-};
-
 class UserOrderList extends Component {
   render () {
+    const orderInfo = {
+      heading: "Your order",
+      user: {
+        id: 1,
+        name: "Hubs"
+      },
+      activeOrder: this.props.activeOrder
+    };
+
     return (
-      <OrderList {...this.props.test_props} />
+      <OrderList {...orderInfo} />
     )
   }
 }
 
-function mapStateToProps() {
+function mapStateToProps(state) {
+  const activeOrder = state.orderList.find((order) => state.activeOrder === order.orderNumber) || {};
   return {
-    test_props: { ...TEST_DATA }
+    activeOrder
   }
 }
 
