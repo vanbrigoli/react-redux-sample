@@ -13,6 +13,21 @@ const currentOrderList = (state = [
         itemName: 'TEST 3',
         price: 500,
         id: 3
+    },
+    {
+        itemName: 'TEST 1',
+        price: 500,
+        id: 4
+    },
+    {
+        itemName: 'TEST 2',
+        price: 500,
+        id: 5
+    },
+    {
+        itemName: 'TEST 3',
+        price: 500,
+        id: 6
     }
 ], action) => {
     switch(action.type){
@@ -20,15 +35,9 @@ const currentOrderList = (state = [
             return [];
         }
         case 'REMOVE_ITEM': {
-            let copy = [...state];
-            let counter = 0;
-            for(let item of copy){
-                if(item.id === action.id){
-                    copy.splice(counter, 1);
-                }
-                counter++;
-            }
-            return copy;
+            return state.filter((item) => {
+                return item.id !== action.id;
+            });
         }
         default: return [...state]
     }
