@@ -1,24 +1,26 @@
 import React, {Component} from 'react';
 import{connect} from 'react-redux';
 import {addItem} from '../actions/TrayActions';
-
+import {sortMenuItems} from '../actions/TrayActions';
 
 import MenuItem from './MenuItem';
-
 
 class Menu extends Component {
 
     renderList(){
-        console.log(this.props.menuList);
         return this.props.menuList.map((menuItem)=>{
             return (
                 <MenuItem key={menuItem.id} item={menuItem} onAdd={(item)=>{this.props.addMenuItem(item)}}/>
             )
         })
     }
+
     render(){
         return(
             <div>
+                Sort by:
+                <button onClick={() => this.props.onSortMenuItems('price')}> Price </button>
+                <button onClick={() => this.props.onSortMenuItems('itemName')}> Name </button>
                 {this.renderList()}
             </div>
         );
@@ -35,7 +37,10 @@ function mapStateToProps (state) {
 const mapDispatchToProps = dispatch => {
     return {
         addMenuItem: (item) => {
-        dispatch(addItem(item))
+            dispatch(addItem(item))
+        },
+        onSortMenuItems: (sortType) => {
+            dispatch(sortMenuItems(sortType))
         }
     }
 };

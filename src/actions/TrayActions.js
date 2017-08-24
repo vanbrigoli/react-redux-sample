@@ -26,4 +26,9 @@ export function addItem(menuItem) {
     }
 }
 
-
+export function sortMenuItems(sortType) {
+    return {
+        type: 'SORT_MENU',
+        sortType: sortType
+    }
+}
