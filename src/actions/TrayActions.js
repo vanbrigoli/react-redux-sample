@@ -19,3 +19,11 @@ export function rollbackOrder() {
     }
 }
 
+export function addItem(menuItem) {
+    return {
+        type: 'ADD_ITEM',
+        ...menuItem
+    }
+}
+
+

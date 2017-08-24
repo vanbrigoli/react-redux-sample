@@ -6,6 +6,7 @@ import { submitOrder, removeItem, rollbackOrder } from './../actions/TrayActions
 
 const Tray = ({currentOrder, getTotal, onSubmit, onRemove}) => {
     if(currentOrder.length !== 0) {
+        let ctr = 0;
         return (
             <div>
                 <table className="table table-bordered table-responsive">
@@ -17,7 +18,7 @@ const Tray = ({currentOrder, getTotal, onSubmit, onRemove}) => {
                     </tr>
                     </thead>
                     <tbody>
-                    { currentOrder.map((order) => (<TrayItem order={order} key={order.id} onRemove={() => onRemove(order.id)}/>))}
+                    { currentOrder.map((order) => (<TrayItem order={order} key={ctr++} onRemove={() => onRemove(order.id)}/>))}
                     </tbody>
                 </table>
                 <div className="alert alert-success"><span>TOTAL: Php. </span>{getTotal()}</div>

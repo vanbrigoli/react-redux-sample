@@ -34,6 +34,13 @@ const currentOrderList = (state = [
         case 'ROLLBACK': {
             return [];
         }
+        case 'ADD_ITEM': {
+            const { itemName, price, id } = action;
+            return [
+                ...state,
+                { itemName, price, id}
+            ]
+        }
         case 'REMOVE_ITEM': {
             return state.filter((item) => {
                 return item.id !== action.id;
