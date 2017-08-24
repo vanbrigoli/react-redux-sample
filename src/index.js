@@ -7,6 +7,8 @@ import listStore from './store/ListStore';
 import Root from './components/Root';
 import registerServiceWorker from './registerServiceWorker';
 
+global.dispatch = listStore.dispatch;
+
 render(
     <Root store={listStore} />,
     document.getElementById('root')
