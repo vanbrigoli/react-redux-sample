@@ -10,7 +10,6 @@ export default class UserOrderList extends Component {
 
   render() {
     const { heading, user, activeOrder } = this.props;
-    console.log(activeOrder)
     const total = activeOrder.totalPrice || 0;
 
     return (
@@ -19,7 +18,8 @@ export default class UserOrderList extends Component {
           {heading}
         </div>
         <div className="panel-body">
-          Order ni: {user.name}
+          <p>Order #:{activeOrder.orderNumber}</p>
+          <p>By: {user.name}</p>
           <ul className="list-group">
             {this.renderOrders()}
           </ul>
