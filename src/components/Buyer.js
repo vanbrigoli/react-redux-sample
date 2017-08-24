@@ -21,7 +21,7 @@ class Buyer extends Component {
                     <div className="header">
                         {Navbar("Buyer")}
                     </div>
-                    <div className="container VendPanel">
+                    <div className="row VendPanel">
                         <div className="PanelCol col-sm-6">
                             <fieldset className="tray">
                                 <legend>Food Menu</legend>

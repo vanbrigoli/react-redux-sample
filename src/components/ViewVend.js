@@ -9,7 +9,7 @@ class ViewVend extends Component {
                 <div className="header row">
                     {Navbar("Vendor","ViewVend")}
                 </div>
-                <div className="container VendPanel">
+                <div className="row VendPanel">
                     <fieldset>
                         <legend>Vending List</legend>
                         {/*Hardcoded mockups | Placeholders*/}
