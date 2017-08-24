@@ -10,7 +10,7 @@ export default class Buyer extends Component {
             <div>
                 <div className="container">
                     <div className="header">
-                        {Navbar("Buyer")}
+                        <Navbar/>
                     </div>
                     <div className="row VendPanel">
                         <div className="PanelCol col-sm-6">

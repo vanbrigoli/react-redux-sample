@@ -1,31 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { Component } from 'react';
+import { Link, browserHistory } from 'react-router';
 import './Navbar.css';
 
-const CheckNavState = (group,page,NavItem) => {
-    var endState = "btn btn-success ";
-    if (group !== "Vendor") {
-        endState = endState + "hide";
-        return endState;
-    }
-    if (page === NavItem) {
-        endState = endState + "disabled";
-    }
-    return endState;
-}
+class Navbar extends Component {
+    render() {
+        const vendorClass = browserHistory.getCurrentLocation().pathname === '/vendor' ? 'active': '';
+        const orderListClass = browserHistory.getCurrentLocation().pathname === '/order-list' ? 'active': '';
+        return (
+            <nav className="navbar navbar-default navbar-fixed-top">
+                <div className="container">
+                    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul className={browserHistory.getCurrentLocation().pathname === '/buyer' ? "nav navbar-nav hidden": "nav navbar-nav"}>
+                            <li className={vendorClass}><Link to="/vendor">Vendor Window</Link></li>
+                            <li className={orderListClass}><Link to="/order-list">Order List</Link></li>
+                        </ul>
+                        <ul className="nav navbar-nav navbar-right">
+                            <li><Link to="/">Home</Link></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        )
 
-const Navbar = (group="",page="") => {
-    return (
-        <nav className="navbar navbar-default navbar-fixed-top">
-            <div className="table table-responsive">
-                <ul>
-                    <li><Link to="/" className="btn btn-success">Home</Link></li>
-                    <li><Link to="/vendItem" className={CheckNavState(group,page,"VendItem")}>Vend an Item</Link></li>
-                    <li><Link to="/vendor" className={CheckNavState(group,page,"ViewVend")}>View Vending List</Link></li>
-                </ul>
-            </div>
-        </nav>
-    )
+    }
+
 };
 
 export default Navbar;

@@ -1,21 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './../App'
 import Buyer from './Buyer';
 import Checkout from './Checkout';
-import ViewVend from './ViewVend';
+import VendorView from './VendorView';
 import VendItem from './VendItem';
+import VendorOrderListView from './VendorOrderListView';
 
 const Root = ({ store }) => (
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App}/>
-            <Route path={"/vendor"} component={ViewVend}/>
-            <Route path={"/vendItem"} component={VendItem}/>
             <Route path={"/buyer"} component={Buyer}/>
             <Route path={"/checkout"} component={Checkout}/>
+            <Route path={"/vendor"} component={VendorView}>
+                <IndexRoute component={VendItem}/>
+                <Route path={"/order-list"} component={VendorOrderListView}/>
+            </Route>
         </Router>
     </Provider>
 );
