@@ -1,15 +1,6 @@
 .VendPanel {
-    top: 30%;
-    display: block;
-    max-width: 100%;
-    position: initial;
-    height: auto;
     text-align: center;
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 1px;
-    padding: 5px;
-    margin: 50px;
+    margin-top: 50px;
 }
 
 .container {

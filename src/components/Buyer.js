@@ -9,18 +9,16 @@ export default class Buyer extends Component {
         return (
             <div>
                 <div className="container">
-                    <div className="header">
-                        <Navbar/>
-                    </div>
+                    <Navbar/>
                     <div className="row VendPanel">
-                        <div className="PanelCol col-sm-6">
-                            <fieldset className="tray">
+                        <div className="col-sm-6">
+                            <fieldset>
                                 <legend>Food Menu</legend>
                                 {/*Hardcoded mockups | Placeholders*/}
                                 <Menu />
                             </fieldset>
                         </div> 
-                        <div className="PanelCol col-sm-6">
+                        <div className="col-sm-6">
                             <legend>Tray</legend>
                             <Tray/>
                         </div>

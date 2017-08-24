@@ -2,6 +2,7 @@ import React from 'react';
 import TrayItem from './TrayItem';
 import SubmitOrderBtn from './SubmitOrderBtn';
 import { connect } from 'react-redux';
+import { formatPrice } from './../utils';
 import { submitOrder, removeItem, rollbackOrder } from './../actions/TrayActions';
 
 const Tray = ({currentOrder, getTotal, onSubmit, onRemove}) => {
@@ -21,7 +22,7 @@ const Tray = ({currentOrder, getTotal, onSubmit, onRemove}) => {
                     { currentOrder.map((order) => (<TrayItem order={order} key={ctr++} onRemove={() => onRemove(order.id)}/>))}
                     </tbody>
                 </table>
-                <div className="alert alert-success"><span>TOTAL: Php. </span>{getTotal()}</div>
+                <div className="alert alert-success"><span>TOTAL: </span><strong>{formatPrice(getTotal())}</strong></div>
                 <SubmitOrderBtn onClick={() => onSubmit(currentOrder, getTotal())}/>
             </div>
         )

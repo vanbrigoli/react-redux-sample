@@ -1,27 +1,36 @@
-import React from 'react';
+import React from 'react'
+import MenuItem from './MenuItem';
+import { removeVendorItem } from './../actions/VendorActions';
+import {connect} from 'react-redux';
 
-const VendItemList = () => {
-    return (
-        <div>
-            <h2>Vendor Items</h2>
-            <table className="table table-bordered table-responsive">
-                <thead>
-                <tr>
-                    <th>Order</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    )
+const VendItemList = ({vendorItems, onRemove}) => {
+    if(vendorItems.length !== 0) {
+        console.log("WINDOW ", window);
+        return (
+            <div className="row">
+                {vendorItems.map((item) => (
+                    <div className="col-md-4" style={{height: 200}}>
+                        <MenuItem key={item.id} item={item} btnName="Remove" onAdd={(item)=>{onRemove(item.id)}}/>
+                    </div>
+                ))}
+            </div>
+        )
+    }
+    return <div>No vendor items yet.</div>
 };
 
-export default VendItemList;
+const mapStateToProps = state => {
+    return {
+        vendorItems: state.vendItemList
+    }
+};
+
+const mapDispatchToProps  = dispatch => {
+    return {
+        onRemove: (id) => {
+            dispatch(removeVendorItem(id));
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(VendItemList);

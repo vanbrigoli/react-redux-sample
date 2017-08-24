@@ -5,11 +5,21 @@ const vendItemList = (state = [
     {id: 2, itemName: 'Adobong Kesarapsarap', price: 70, description:`Better than any adobo in world, Rovelle's adobo will surely make you go loko!`, image:'https://a8g4i9g5y.ssl.hwcdn.net/files/styles/food_image/public/image/7b/94/107805-filipino-pork-adobo.png'},
     {id: 3, itemName: 'Bicol Express', price: 80, description:'Hot', image: null},
     {id: 4, itemName: 'Spring Rolls', price: 50, description:'Rolls in your mouth', image: null},
-    {id: 5, itemName: 'Lechon Kawali', price: 100, description:'Crispylicious!', image:null}
+    {id: 5, itemName: 'Lechon Kawali', price: 100, description:'Crispylicious!', image:null},
+    {id: 6, itemName: 'Lechon Kawali', price: 100, description:'Crispylicious!', image:null},
+    {id: 7, itemName: 'Bicol Express', price: 80, description:'Hot', image: null},
+    {id: 8, itemName: 'Spring Rolls', price: 50, description:'Rolls in your mouth', image: null},
+    {id: 9, itemName: 'Lechon Kawali', price: 100, description:'Crispylicious!', image:null},
+    {id: 10, itemName: 'Lechon Kawali', price: 100, description:'Crispylicious!', image:null}
 ], action) => {
     switch(action.type){
         case 'SORT_MENU': {
             return _.sortBy(state, [action.sortType])
+        }
+        case 'REMOVE_VENDOR_ITEM': {
+            return state.filter((item) => {
+                return item.id !== action.id;
+            });
         }
         default: return state
     }

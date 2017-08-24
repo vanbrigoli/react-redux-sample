@@ -6,7 +6,7 @@ import App from './../App'
 import Buyer from './Buyer';
 import Checkout from './Checkout';
 import VendorView from './VendorView';
-import VendItem from './VendItem';
+import VendorWindow from './VendorWindow';
 import VendorOrderListView from './VendorOrderListView';
 
 const Root = ({ store }) => (
@@ -16,7 +16,7 @@ const Root = ({ store }) => (
             <Route path={"/buyer"} component={Buyer}/>
             <Route path={"/checkout"} component={Checkout}/>
             <Route path={"/vendor"} component={VendorView}>
-                <IndexRoute component={VendItem}/>
+                <IndexRoute component={VendorWindow}/>
                 <Route path={"/order-list"} component={VendorOrderListView}/>
             </Route>
         </Router>
