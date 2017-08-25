@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router';
 import UserOrderList from './UserOrderList';
+import Navbar from './Navbar';
 
 const Checkout = () => {
     return (
         <div>
-            <Link to="/" className="btn btn-success">Home</Link>
             <div className="container">
-              <UserOrderList/>
+                <Navbar/>
+                <div className="row" style={{marginTop: 50}}>
+                    <UserOrderList/>
+                </div>
             </div>
         </div>
     )

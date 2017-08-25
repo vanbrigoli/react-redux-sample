@@ -21,7 +21,7 @@ export default class UserOrderList extends Component {
           {heading}
         </div>
         <div className="panel-body">
-          <p>Order #:{activeOrder.orderNumber}</p>
+          <h1>Order #:{activeOrder.orderNumber}</h1>
           <p>By: {activeOrder.user.name}</p>
           <ul className="list-group">
             {this.renderOrders()}
