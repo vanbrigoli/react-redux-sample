@@ -10,16 +10,40 @@ import './AddItem.css';
 const PESO_SIGN = "₱";
 
 class AddItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {addedFood:null};
+  }
+
+  onSubmit(values) {
+    values.price = getRawPrice(values.price);
+    this.setState({
+      addedFood:{...values}
+    });
+    this.props.addItem(values);
+
+    this.props.reset();
+  }
+
+  renderAlert() {
+    const {addedFood} = this.state;
+    return !addedFood ? '' : (
+      <div className="alert alert-success">
+        Successfully added {addedFood.itemName}!
+      </div>
+    )
+  }
+
   renderField(field) {
     const { meta: {touched, error} } = field;
     const className = `form-group col-md-3 ${touched && error ? 'has-error': ''}`;
     return (
       <div className={className}>
         <label>{field.label}</label>
-        <input
+        <field.tag
           className="form-control"
           {...field.input}
-          placeholder={field.label}
+          placeholder={field.placeholder}
           type={field.type}/>
         <span className="help-block">
           {touched ? error : ''}
@@ -37,7 +61,6 @@ class AddItem extends Component {
         <CurrencyInput
           className="form-control"
           {...field.input}
-          placeholder={field.label}
           prefix={PESO_SIGN}/>
         <span className="help-block">
           {touched ? error : ''}
@@ -46,21 +69,19 @@ class AddItem extends Component {
     );
   }
 
-  onSubmit(values) {
-    values.price = getRawPrice(values.price);
-    this.props.addItem(values);
-
-    this.props.reset();
-  }
-
   render() {
     const {handleSubmit} = this.props;
     return (
       <form className="Add-Item-form form-inline" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <div className="row">
+          {this.renderAlert()}
+        </div>
+        <div className="row">
           <Field
             label="Item name"
             name="itemName"
+            placeholder="Enter food here"
+            tag="input"
             type="text"
             component={this.renderField}
           />
