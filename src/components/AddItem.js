@@ -35,8 +35,8 @@ class AddItem extends Component {
   }
 
   renderField(field) {
-    const { meta: {touched, error} } = field;
-    const className = `form-group col-md-3 ${touched && error ? 'has-error': ''}`;
+    const { meta: {touched, error}, dimension } = field;
+    const className = `form-group ${dimension} ${touched && error ? 'has-error': ''}`;
     return (
       <div className={className}>
         <label>{field.label}</label>
@@ -44,7 +44,7 @@ class AddItem extends Component {
           className="form-control"
           {...field.input}
           placeholder={field.placeholder}
-          type={field.type}/>
+          type="text"/>
         <span className="help-block">
           {touched ? error : ''}
         </span>
@@ -53,8 +53,8 @@ class AddItem extends Component {
   }
 
   renderCurrencyInput(field) {
-    const { meta: {touched, error} } = field;
-    const className = `form-group col-md-3 ${touched && error ? 'has-error': ''}`;
+    const { meta: {touched, error}, dimension } = field;
+    const className = `form-group ${dimension} ${touched && error ? 'has-error': ''}`;
     return (
       <div className={className}>
         <label>{field.label}</label>
@@ -82,14 +82,32 @@ class AddItem extends Component {
             name="itemName"
             placeholder="Enter food here"
             tag="input"
-            type="text"
+            dimension="col-md-6"
             component={this.renderField}
           />
           <Field
             label="Price"
             name="price"
             type="number"
+            dimension="col-md-6"
             component={this.renderCurrencyInput}
+          />
+          <Field
+            label="Image Url"
+            name="image"
+            placeholder="Optional: Enter image url (eg. http://somesite.com/somepath/image.jpg)"
+            tag="input"
+
+            dimension="col-md-12"
+            component={this.renderField}
+          />
+          <Field
+            label="Description"
+            name="description"
+            placeholder="Optional: Describe the food"
+            tag="textarea"
+            dimension="col-md-12"
+            component={this.renderField}
           />
           <div className="col-md-2">
             <button type="submit" className="btn btn-primary">Add Item</button>

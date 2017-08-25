@@ -2,6 +2,7 @@
     text-align: left;
 }
 
-.Add-Item-form.form-inline input.form-control {
+.Add-Item-form.form-inline input.form-control,
+.Add-Item-form.form-inline textarea.form-control {
     width: 100%;
 }
