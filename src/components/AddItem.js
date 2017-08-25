@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, reset } from 'redux-form';
-import {addItem} from './../actions/TodoActions';
+import { Field, reduxForm } from 'redux-form';
+import CurrencyInput from 'react-currency-input';
+
+import { addItem } from './../actions/TodoActions';
+import { getRawPrice } from '../utils';
 import './AddItem.css';
+
+const PESO_SIGN = "₱";
 
 class AddItem extends Component {
   renderField(field) {
@@ -23,15 +28,29 @@ class AddItem extends Component {
     );
   }
 
+  renderCurrencyInput(field) {
+    const { meta: {touched, error} } = field;
+    const className = `form-group col-md-3 ${touched && error ? 'has-error': ''}`;
+    return (
+      <div className={className}>
+        <label>{field.label}</label>
+        <CurrencyInput
+          className="form-control"
+          {...field.input}
+          placeholder={field.label}
+          prefix={PESO_SIGN}/>
+        <span className="help-block">
+          {touched ? error : ''}
+        </span>
+      </div>
+    );
+  }
+
   onSubmit(values) {
-    values.price = Number(values.price);
+    values.price = getRawPrice(values.price);
     this.props.addItem(values);
-    reset('AddItem');
-    // if (!this.input.value.trim()) {
-    //     return;
-    // }
-    // listStore.dispatch(addItem(this.input.value));
-    // this.input.value = '';
+
+    this.props.reset();
   }
 
   render() {
@@ -49,7 +68,7 @@ class AddItem extends Component {
             label="Price"
             name="price"
             type="number"
-            component={this.renderField}
+            component={this.renderCurrencyInput}
           />
           <div className="col-md-2">
             <button type="submit" className="btn btn-primary">Add Item</button>
@@ -66,7 +85,7 @@ function validate(values) {
     errors.itemName = 'Enter an item name';
   }
 
-  if (!values.price) {
+  if (!getRawPrice(values.price)) {
     errors.price = 'Please enter a valid price';
   }
   return errors;

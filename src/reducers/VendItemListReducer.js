@@ -18,7 +18,7 @@ const vendItemList = (state = [
             let item = action.payload;
             let lastItem = state[state.length - 1];
             item.id = lastItem ? lastItem.id + 1 : 1;
-            return [...state, action.payload];
+            return [...state, {...action.payload}];
       case 'SORT_MENU': {
             return _.sortBy(state, [action.sortType])
         }
