@@ -1,0 +1,5 @@
+#menu-container {
+    max-height: calc(100vh - 175px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}

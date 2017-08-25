@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import{connect} from 'react-redux';
 import {addItem} from '../actions/TrayActions';
 import {sortMenuItems} from '../actions/TrayActions';
+import './Menu.css';
 
 import MenuItem from './MenuItem';
 
@@ -23,7 +24,9 @@ class Menu extends Component {
                 Sort by:
                 <button className="btn btn-link" onClick={() => this.props.onSortMenuItems('price')}> Price </button>|
                 <button className="btn btn-link" onClick={() => this.props.onSortMenuItems('itemName')}> Name </button>
-                {this.renderList()}
+                <div id="menu-container">
+                    {this.renderList()}
+                </div>
             </div>
         );
     }
