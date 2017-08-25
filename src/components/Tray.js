@@ -3,9 +3,9 @@ import TrayItem from './TrayItem';
 import SubmitOrderBtn from './SubmitOrderBtn';
 import { connect } from 'react-redux';
 import { formatPrice } from './../utils';
-import { submitOrder, removeItem, rollbackOrder } from './../actions/TrayActions';
+import { submitOrder, increaseQty, removeItem, decreaseQty, rollbackOrder } from './../actions/TrayActions';
 
-const Tray = ({currentOrder, getTotal, onSubmit, onRemove}) => {
+const Tray = ({currentOrder, getTotal, onSubmit, onAddOne, onRemove, onRemoveOne}) => {
     if(currentOrder.length !== 0) {
         return (
             <div>
@@ -19,8 +19,14 @@ const Tray = ({currentOrder, getTotal, onSubmit, onRemove}) => {
                     </tr>
                     </thead>
                     <tbody>
-                    { currentOrder.map((order, index) => (
-                      <TrayItem order={order} key={index} onRemove={() => onRemove(order.id)}/>)
+                    { currentOrder.map((order, index) =>
+                        <TrayItem
+                          order={order}
+                          key={index}
+                          onAddOne={() => onAddOne(order.id)}
+                          onRemove={() => onRemove(order.id)}
+                          onRemoveOne={() => onRemoveOne(order.id)}
+                        />
                     )}
                     </tbody>
                 </table>
@@ -51,9 +57,15 @@ const mapDispatchToProps  = dispatch => {
         },
         onRemove: (id) => {
             dispatch(removeItem(id));
-        }
+        },
+        onRemoveOne: (id) => {
+            dispatch(decreaseQty(id));
+        },
+        onAddOne: (id) => {
+            dispatch(increaseQty(id));
+        },
     }
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tray);;
+export default connect(mapStateToProps, mapDispatchToProps)(Tray);

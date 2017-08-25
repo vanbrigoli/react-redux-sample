@@ -7,10 +7,20 @@ class TrayItem extends Component {
         return (
             <tr>
                 <td>{itemName}</td>
-                <td>{qty}</td>
+                <td>
+                  <span style={{ width: '50px' }}>{qty}</span>
+                </td>
                 <td>{formatPrice(price * qty)}</td>
                 <td>
-                    <button className="btn btn-warning" onClick={this.props.onRemove}>Remove</button>
+                    <a className="btn btn-default btn-xs" onClick={this.props.onAddOne}>
+                        <span className="glyphicon glyphicon-plus" aria-hidden="true" />
+                    </a>
+                    <a className="btn btn-default btn-xs" onClick={this.props.onRemoveOne}>
+                        <span className="glyphicon glyphicon-minus" aria-hidden="true" />
+                    </a>
+                    <a className="btn btn-default btn-xs" onClick={this.props.onRemove}>
+                        <span className="glyphicon glyphicon-trash" aria-hidden="true" />
+                    </a>
                 </td>
             </tr>
         )
