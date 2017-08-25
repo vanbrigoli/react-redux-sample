@@ -7,19 +7,21 @@ import { submitOrder, removeItem, rollbackOrder } from './../actions/TrayActions
 
 const Tray = ({currentOrder, getTotal, onSubmit, onRemove}) => {
     if(currentOrder.length !== 0) {
-        let ctr = 0;
         return (
             <div>
                 <table className="table table-bordered table-responsive">
                     <thead>
                     <tr>
                         <th>Order</th>
+                        <th>Qty</th>
                         <th>Price</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    { currentOrder.map((order) => (<TrayItem order={order} key={ctr++} onRemove={() => onRemove(order.id)}/>))}
+                    { currentOrder.map((order, index) => (
+                      <TrayItem order={order} key={index} onRemove={() => onRemove(order.id)}/>)
+                    )}
                     </tbody>
                 </table>
                 <div className="alert alert-success"><span>TOTAL: </span><strong>{formatPrice(getTotal())}</strong></div>
@@ -35,7 +37,7 @@ const mapStateToProps = state => {
         currentOrder: state.currentOrderList,
         getTotal: () => {
             return state.currentOrderList.reduce((totalPrice, currentOrder) => {
-                return totalPrice + currentOrder.price;
+                return totalPrice + (currentOrder.price * currentOrder.qty);
             }, 0)
         }
     }

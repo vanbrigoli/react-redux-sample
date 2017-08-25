@@ -3,10 +3,12 @@ import { formatPrice } from './../utils';
 
 class TrayItem extends Component {
     render() {
+        const { itemName, qty, price } = this.props.order;
         return (
             <tr>
-                <td>{this.props.order.itemName}</td>
-                <td>{formatPrice(this.props.order.price)}</td>
+                <td>{itemName}</td>
+                <td>{qty}</td>
+                <td>{formatPrice(price * qty)}</td>
                 <td>
                     <button className="btn btn-warning" onClick={this.props.onRemove}>Remove</button>
                 </td>

@@ -1,45 +1,14 @@
-const currentOrderList = (state = [
-    {
-        itemName: 'TEST 1',
-        price: 500,
-        id: 1
-    },
-    {
-        itemName: 'TEST 2',
-        price: 500,
-        id: 2
-    },
-    {
-        itemName: 'TEST 3',
-        price: 500,
-        id: 3
-    },
-    {
-        itemName: 'TEST 1',
-        price: 500,
-        id: 4
-    },
-    {
-        itemName: 'TEST 2',
-        price: 500,
-        id: 5
-    },
-    {
-        itemName: 'TEST 3',
-        price: 500,
-        id: 6
-    }
-], action) => {
+const currentOrderList = (state = [], action) => {
     switch(action.type){
         case 'ROLLBACK': {
             return [];
         }
         case 'ADD_ITEM': {
             const { itemName, price, id } = action;
-            return [
-                ...state,
-                { itemName, price, id}
-            ]
+
+            return state.find(orderItem => orderItem.id === id)
+              ? state.map(orderItem => orderItem.id === id ? { ...orderItem, qty: ++orderItem.qty } : orderItem)
+              : [ ...state, { itemName, price, id, qty: 1} ]
         }
         case 'REMOVE_ITEM': {
             return state.filter((item) => {
