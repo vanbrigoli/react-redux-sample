@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import OrderTile from './OrderTile';
 import { formatPrice } from '../utils';
+import {browserHistory} from 'react-router';
+import _ from 'lodash';
 
 export default class UserOrderList extends Component {
+
   renderOrders() {
     const { activeOrder } = this.props;
     return activeOrder.orders
@@ -11,9 +14,18 @@ export default class UserOrderList extends Component {
       ));
   }
 
+  isInvalidActiveOrder (activeOrder){
+    return activeOrder === undefined || _.isEmpty(activeOrder);
+  }
+
   render() {
     const { heading, activeOrder } = this.props;
     const total = activeOrder.totalPrice || 0;
+
+    if (this.isInvalidActiveOrder(activeOrder)) {
+        browserHistory.push('/buyer');
+        return <div>Redirecting to buyer view.</div>;
+    }
 
     return (
       <div className="panel panel-default">
