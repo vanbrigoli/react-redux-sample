@@ -1,4 +1,4 @@
-import { SUBMIT_ORDER } from '../actions/TrayActions'
+import { SUBMIT_ORDER, CLAIM_ORDER } from '../actions/TrayActions'
 let counter = 100;
 let orderNumber;
 
@@ -12,11 +12,19 @@ export const orderList = (state = [], action) => {
                     orderNumber,
                     orders: action.orders,
                     totalPrice: action.total,
-                    user:action.user
+                    user:action.user,
+                    isClaimed: false,
                 }
             ];
         }
-        default: return [...state]
+        case CLAIM_ORDER: {
+            return state.map(function(orderItem) {
+                return orderItem.orderNumber === action.orderNumber
+                ? {...orderItem, isClaimed: true}
+                : orderItem
+            })
+        }
+        default: return state
     }
 };
 

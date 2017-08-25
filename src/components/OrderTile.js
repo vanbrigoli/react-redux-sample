@@ -4,7 +4,6 @@ import { formatPrice } from '../utils';
 const OrderTile = ({ order }) => {
   const { id, itemName, price, qty = 1} = order;
   const amount = formatPrice(price*qty);
-
   return (
     <li className="list-group-item">
       <div className="card">

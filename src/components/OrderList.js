@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import OrderTile from './OrderTile';
 import { formatPrice } from '../utils';
+import { connect } from 'react-redux';
+import { claimOrder } from '../actions/TrayActions';
 
-export default class UserOrderList extends Component {
+class UserOrderList extends Component {
   renderOrders() {
     const { activeOrder } = this.props;
     return activeOrder.orders
@@ -11,10 +13,12 @@ export default class UserOrderList extends Component {
       ));
   }
 
+  HandleClaim(orderNumber) {
+    this.props.dispatch(claimOrder(orderNumber))
+  }
   render() {
-    const { heading, activeOrder } = this.props;
+    const { heading, activeOrder, isVendorView } = this.props;
     const total = activeOrder.totalPrice || 0;
-
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
@@ -26,11 +30,12 @@ export default class UserOrderList extends Component {
           <ul className="list-group">
             {this.renderOrders()}
           </ul>
-
           Total: {formatPrice(total)}
+          {isVendorView?<button className="btn btn-primary btn-success pull-right" disabled={activeOrder.isClaimed} onClick={()=>this.HandleClaim(activeOrder.orderNumber)}>Claimed</button>:null}
         </div>
       </div>
     )
   }
 }
 
+export default connect()(UserOrderList);
