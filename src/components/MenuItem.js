@@ -13,9 +13,9 @@ class MenuItem extends Component {
         </div>
         <div className="media-body text-left">
           <h4 className="card-title"><strong>{this.props.item.itemName}</strong></h4>
-          <button className="btn btn-primary" onClick={()=>this.props.onAdd(this.props.item)}>{this.props.btnName}</button>
           <h3>{formatPrice(this.props.item.price)}</h3>
           <p className="card-text">{this.props.item.description}</p>
+          <button className={`btn ${this.props.btnType}`} onClick={()=>this.props.onAdd(this.props.item)}>{this.props.btnName}</button>
         </div>
       </div>
     );
