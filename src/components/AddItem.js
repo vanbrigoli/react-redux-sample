@@ -31,7 +31,7 @@ class AddItem extends Component {
       <div className="alert alert-success">
         Successfully added {addedFood.itemName}!
       </div>
-    )
+    );
   }
 
   renderField(field) {
