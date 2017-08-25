@@ -1,0 +1,7 @@
+.Add-Item-form.form-inline {
+    text-align: left;
+}
+
+.Add-Item-form.form-inline input.form-control {
+    width: 100%;
+}

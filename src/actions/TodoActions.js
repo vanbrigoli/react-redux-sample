@@ -1,13 +1,15 @@
+export const ADD_ITEM = 'add_item';
+
 export function getLists() {
     return {
         type: 'GET_LIST'
     }
 }
 
-export function addItem(text) {
+export function addItem(item) {
     return {
-        type: 'ADD_ITEM',
-        payload: text
+        type: ADD_ITEM,
+        payload: item
     }
 }
 
