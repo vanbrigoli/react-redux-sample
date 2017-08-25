@@ -5,12 +5,13 @@ import {connect} from 'react-redux';
 
 const VendItemList = ({vendorItems, onRemove}) => {
     if(vendorItems.length !== 0) {
-        console.log("WINDOW ", window);
         return (
             <div className="row">
                 {vendorItems.map((item) => (
                     <div className="col-md-4" style={{ height: '240px' }}>
-                        <MenuItem key={item.id} item={item} btnName="Remove" btnType="btn-danger" onAdd={(item)=>{onRemove(item.id)}}/>
+                        <MenuItem key={item.id} item={item}>
+                            <button className="btn btn-danger" onClick={()=>onRemove(item.id)}>Remove</button>
+                        </MenuItem>
                     </div>
                 ))}
             </div>

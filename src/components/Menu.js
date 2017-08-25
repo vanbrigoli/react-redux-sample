@@ -10,7 +10,9 @@ class Menu extends Component {
     renderList(){
         return this.props.menuList.map((menuItem)=>{
             return (
-                <MenuItem key={menuItem.id} item={menuItem} btnName="Add" btnType="btn-primary" onAdd={(item)=>{this.props.addMenuItem(item)}}/>
+                <MenuItem key={menuItem.id} item={menuItem}>
+                    <button className="btn btn-primary" onClick={()=>this.props.addMenuItem(menuItem)}>Add</button>
+                </MenuItem>
             )
         })
     }
