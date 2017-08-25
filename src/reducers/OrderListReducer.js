@@ -11,7 +11,8 @@ export const orderList = (state = [], action) => {
                 {
                     orderNumber,
                     orders: action.orders,
-                    totalPrice: action.total
+                    totalPrice: action.total,
+                    user:action.user
                 }
             ];
         }

@@ -1,9 +1,10 @@
 export const SUBMIT_ORDER = 'SUBMIT_ORDER';
-export function submitOrder(orderList, total) {
+export function submitOrder(orderList, total, user) {
     return {
         type: SUBMIT_ORDER,
         orders: orderList,
-        total: total
+        total: total,
+        user:user
     }
 }
 

@@ -1,9 +1,10 @@
 import React from 'react';
+import AllOrdersList from './AllOrdersList';
 
 const VendorOrderListView = () => {
     return (
         <div className="container" style={{marginTop: 50}}>
-            Vendor order list
+            <AllOrdersList />
         </div>
     )
 };

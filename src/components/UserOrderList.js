@@ -6,10 +6,6 @@ class UserOrderList extends Component {
   render () {
     const orderInfo = {
       heading: "Your order",
-      user: {
-        id: 1,
-        name: "Hubs"
-      },
       activeOrder: this.props.activeOrder
     };
 

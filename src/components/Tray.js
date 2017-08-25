@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { formatPrice } from './../utils';
 import { submitOrder, increaseQty, removeItem, decreaseQty, rollbackOrder } from './../actions/TrayActions';
 
-const Tray = ({currentOrder, getTotal, onSubmit, onAddOne, onRemove, onRemoveOne}) => {
+const Tray = ({currentOrder, getTotal,user, onSubmit, onAddOne, onRemove, onRemoveOne}) => {
     if(currentOrder.length !== 0) {
         return (
             <div>
@@ -31,7 +31,7 @@ const Tray = ({currentOrder, getTotal, onSubmit, onAddOne, onRemove, onRemoveOne
                     </tbody>
                 </table>
                 <div className="alert alert-success"><span>TOTAL: </span><strong>{formatPrice(getTotal())}</strong></div>
-                <SubmitOrderBtn onClick={() => onSubmit(currentOrder, getTotal())}/>
+                <SubmitOrderBtn onClick={() => onSubmit(currentOrder, getTotal(), user)}/>
             </div>
         )
     }
@@ -40,6 +40,7 @@ const Tray = ({currentOrder, getTotal, onSubmit, onAddOne, onRemove, onRemoveOne
 
 const mapStateToProps = state => {
     return {
+        user:{name:'Nokia', id:0},
         currentOrder: state.currentOrderList,
         getTotal: () => {
             return state.currentOrderList.reduce((totalPrice, currentOrder) => {
@@ -51,8 +52,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps  = dispatch => {
     return {
-        onSubmit: (itemList, total) => {
-            dispatch(submitOrder(itemList, total));
+        onSubmit: (itemList, total, user) => {
+            dispatch(submitOrder(itemList, total, user));
             dispatch(rollbackOrder());
         },
         onRemove: (id) => {
