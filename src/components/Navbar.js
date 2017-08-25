@@ -4,14 +4,12 @@ import './Navbar.css';
 
 class Navbar extends Component {
     render() {
-        const vendorClass = browserHistory.getCurrentLocation().pathname === '/vendor' ? 'active': '';
-        const orderListClass = browserHistory.getCurrentLocation().pathname === '/order-list' ? 'active': '';
-        var hiddenClass = "";
-        if (browserHistory.getCurrentLocation().pathname === '/checkout' || '/buyer')
-            hiddenClass = "nav navbar-nav hidden";
-        else
-            hiddenClass = "nav navbar-nav";
-
+        const path = browserHistory.getCurrentLocation().pathname;
+        const vendorClass = path === '/vendor' ? 'active': '';
+        const orderListClass = path === '/order-list' ? 'active': '';
+        const hiddenClass = path === '/checkout' || path === '/buyer'
+            ? "nav navbar-nav hidden"
+            : "nav navbar-nav";
         return (
             <nav className="navbar navbar-default navbar-fixed-top">
                 <div className="container">
