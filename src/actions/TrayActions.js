@@ -8,6 +8,14 @@ export function submitOrder(orderList, total, user) {
     }
 }
 
+export const CLAIM_ORDER = 'CLAIM_ORDER';
+export function claimOrder(orderNumber) {
+    return {
+        type: CLAIM_ORDER,
+        orderNumber: orderNumber,
+    }
+}
+
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export function removeItem(id) {
     return {

@@ -9,7 +9,7 @@ class AllOrdersList extends Component {
         }
         return this.props.allOrderList.map((order=>{
             return (
-                <OrderList activeOrder={order} />
+                <OrderList activeOrder={order} isVendorView />
             );
         }));
     }
