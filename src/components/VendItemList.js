@@ -9,7 +9,7 @@ const VendItemList = ({vendorItems, onRemove}) => {
         return (
             <div className="row">
                 {vendorItems.map((item) => (
-                    <div className="col-md-4" style={{height: 200}}>
+                    <div className="col-md-4" style={{ height: '240px' }}>
                         <MenuItem key={item.id} item={item} btnName="Remove" onAdd={(item)=>{onRemove(item.id)}}/>
                     </div>
                 ))}
