@@ -12,15 +12,17 @@ class TrayItem extends Component {
                 </td>
                 <td>{formatPrice(price * qty)}</td>
                 <td>
-                    <a className="btn btn-default btn-xs" onClick={this.props.onAddOne}>
-                        <span className="glyphicon glyphicon-plus" aria-hidden="true" />
-                    </a>
-                    <a className="btn btn-default btn-xs" onClick={this.props.onRemoveOne}>
-                        <span className="glyphicon glyphicon-minus" aria-hidden="true" />
-                    </a>
-                    <a className="btn btn-default btn-xs" onClick={this.props.onRemove}>
-                        <span className="glyphicon glyphicon-trash" aria-hidden="true" />
-                    </a>
+                    <div className="btn-group" role="group">
+                        <a className="btn btn-default btn-xs">
+                            <span className="glyphicon glyphicon-plus" aria-hidden="true" onClick={this.props.onAddOne}/>
+                        </a>
+                        <a className="btn btn-default btn-xs">
+                            <span className="glyphicon glyphicon-minus" aria-hidden="true" onClick={this.props.onRemoveOne}/>
+                        </a>
+                        <a className="btn btn-default btn-xs">
+                            <span className="glyphicon glyphicon-trash" aria-hidden="true" onClick={this.props.onRemove}/>
+                        </a>
+                    </div>
                 </td>
             </tr>
         )

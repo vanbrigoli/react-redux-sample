@@ -9,8 +9,8 @@ const currentOrderList = (state = [], action) => {
             const { itemName, price, id } = action;
 
             return state.find(orderItem => orderItem.id === id)
-              ? increaseMenuItemQty(state, id)
-              : [ ...state, { itemName, price, id, qty: 1} ]
+                ? increaseMenuItemQty(state, id)
+                : [ ...state, { itemName, price, id, qty: 1} ]
         }
         case INCREASE_QTY: {
             return increaseMenuItemQty(state, action.id)
@@ -29,10 +29,11 @@ const currentOrderList = (state = [], action) => {
 
 function increaseMenuItemQty (orders, id) {
     return orders.map(orderItem => {
-        const updatedMenuItemQty = ++orderItem.qty;
-        return orderItem.id === id
+        const updatedMenuItemQty = orderItem.qty + 1;
+        const updatedMenuItem = orderItem.id === id
             ? { ...orderItem, qty: updatedMenuItemQty }
-            : orderItem
+            : orderItem;
+        return updatedMenuItem;
     })
 }
 
