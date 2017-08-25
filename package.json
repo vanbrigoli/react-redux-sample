@@ -14,7 +14,8 @@
     "redux-form": "^6.6.3",
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^4.3.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "valid-url": "^1.0.9"
   },
   "scripts": {
     "start": "react-scripts start",

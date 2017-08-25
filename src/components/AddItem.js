@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import CurrencyInput from 'react-currency-input';
+import urlValidator from 'valid-url';
 
 import { addItem } from './../actions/TodoActions';
 import { getRawPrice } from '../utils';
@@ -110,7 +111,9 @@ class AddItem extends Component {
             component={this.renderField}
           />
           <div className="col-md-2">
-            <button type="submit" className="btn btn-primary">Add Item</button>
+            <button type="submit"
+                    className="btn btn-primary"
+                    disabled={this.props.invalid}>Add Item</button>
           </div>
         </div>
       </form>
@@ -127,6 +130,11 @@ function validate(values) {
   if (!getRawPrice(values.price)) {
     errors.price = 'Please enter a valid price';
   }
+
+  if (values.image && !urlValidator.isUri(values.image)) {
+    errors.image = 'Please input a valid url.';
+  }
+
   return errors;
 }
 
