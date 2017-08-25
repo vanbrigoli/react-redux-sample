@@ -1,11 +1,17 @@
-import { INCREASE_QTY, DECREASE_QTY } from '../actions/TrayActions';
+import {
+    ROLLBACK,
+    ADD_ITEM,
+    REMOVE_ITEM,
+    INCREASE_QTY,
+    DECREASE_QTY,
+} from '../actions/TrayActions';
 
 const currentOrderList = (state = [], action) => {
     switch(action.type){
-        case 'ROLLBACK': {
+        case ROLLBACK: {
             return [];
         }
-        case 'ADD_ITEM': {
+        case ADD_ITEM: {
             const { itemName, price, id } = action;
 
             return state.find(orderItem => orderItem.id === id)
@@ -15,7 +21,7 @@ const currentOrderList = (state = [], action) => {
         case INCREASE_QTY: {
             return increaseMenuItemQty(state, action.id)
         }
-        case 'REMOVE_ITEM': {
+        case REMOVE_ITEM: {
             return state.filter((item) => {
                 return item.id !== action.id;
             });
