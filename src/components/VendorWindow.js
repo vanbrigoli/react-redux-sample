@@ -6,7 +6,10 @@ import './VendorWindow.css';
 const VendorWindow = ({vendorItems}) => {
     return (
         <div className="container" style={{marginTop: 50}}>
-            <AddItem/>
+            <fieldset style={{textAlign: 'center', marginTop: 20}}>
+              <legend>Add New Item</legend>
+              <AddItem/>
+            </fieldset>
             <fieldset style={{textAlign: 'center', marginTop: 20}}>
                 <legend>Vendor Items</legend>
                 <VendItemList vendorItems={vendorItems}/>
