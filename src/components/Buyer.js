@@ -12,15 +12,24 @@ export default class Buyer extends Component {
                     <Navbar/>
                     <div className="row VendPanel">
                         <div className="col-sm-6">
-                            <fieldset>
-                                <legend>Food Menu</legend>
-                                {/*Hardcoded mockups | Placeholders*/}
-                                <Menu />
-                            </fieldset>
+                            <div className="panel panel-default">
+                                <div className="panel-heading">
+                                    <h3 className="panel-title">Food Menu</h3>
+                                </div>
+                                <div className="panel-body">
+                                    <Menu />
+                                </div>
+                            </div>
                         </div> 
                         <div className="col-sm-6">
-                            <legend>Tray</legend>
-                            <Tray/>
+                            <div className="panel panel-default">
+                                <div className="panel-heading">
+                                    <h3 className="panel-title">Tray</h3>
+                                </div>
+                                <div className="panel-body">
+                                    <Tray/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
