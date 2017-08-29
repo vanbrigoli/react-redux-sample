@@ -1,5 +1,5 @@
 import { SUBMIT_ORDER, CLAIM_ORDER } from '../actions/TrayActions'
-let counter = 100;
+let counter = 1;
 let orderNumber;
 
 export const orderList = (state = [], action) => {
